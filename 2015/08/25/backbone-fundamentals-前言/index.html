@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="MbCiZ4d8vl" />
+  
+  <title>backbone-fundamentals 前言 | 沧浪</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Prelude
+很久以前，“富数据web应用”(data-rich web)是一个矛盾的说法。但现在，这种web应用随处可见，并且你需要知道如何构建它们。
+传统意义上来讲，web应用把繁重的数据放置在服务器端，服务器再把载入完成的HTML页面推向浏览器。因此，客户端那边的JavaScript被限制住无法提升用户体验。到了现在，这种情况被转变了——客户端应用可以在需要的地方，从服务器上拉去原始数据并">
+<meta property="og:type" content="article">
+<meta property="og:title" content="backbone-fundamentals 前言">
+<meta property="og:url" content="http://yoursite.com/2015/08/25/backbone-fundamentals-前言/index.html">
+<meta property="og:site_name" content="沧浪">
+<meta property="og:description" content="Prelude
+很久以前，“富数据web应用”(data-rich web)是一个矛盾的说法。但现在，这种web应用随处可见，并且你需要知道如何构建它们。
+传统意义上来讲，web应用把繁重的数据放置在服务器端，服务器再把载入完成的HTML页面推向浏览器。因此，客户端那边的JavaScript被限制住无法提升用户体验。到了现在，这种情况被转变了——客户端应用可以在需要的地方，从服务器上拉去原始数据并">
+<meta property="og:image" content="http://yoursite.com/img/logo.jpg">
+<meta property="og:updated_time" content="2015-08-25T14:32:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="backbone-fundamentals 前言">
+<meta name="twitter:description" content="Prelude
+很久以前，“富数据web应用”(data-rich web)是一个矛盾的说法。但现在，这种web应用随处可见，并且你需要知道如何构建它们。
+传统意义上来讲，web应用把繁重的数据放置在服务器端，服务器再把载入完成的HTML页面推向浏览器。因此，客户端那边的JavaScript被限制住无法提升用户体验。到了现在，这种情况被转变了——客户端应用可以在需要的地方，从服务器上拉去原始数据并">
+  
+    <link rel="alternative" href="/atom.xml" title="沧浪" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://avatars0.githubusercontent.com/u/6065488?v=3&amp;u=1304a29788f86d10615bb1ae6c9ded613352f363&amp;s=140" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">sinoon</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">沧浪之水清兮，可以濯我衣；沧浪之水浊兮，可以濯我足。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="http://github.com/sinoon" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="mailto:sinoon1218@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/JavaScript-对象-复制/" style="font-size: 10px;">JavaScript 对象 复制</a> <a href="/tags/backbone-fundamentals/" style="font-size: 10px;">backbone-fundamentals</a> <a href="/tags/express-服务器开发-nodejs/" style="font-size: 10px;">express 服务器开发 nodejs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/node-redis-msgpack-messagepack/" style="font-size: 10px;">node redis msgpack messagepack</a> <a href="/tags/webhook-github-nodejs/" style="font-size: 10px;">webhook github nodejs</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">站在这里，看着远方。风大浪大，风流飘荡。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">sinoon</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://avatars0.githubusercontent.com/u/6065488?v=3&amp;u=1304a29788f86d10615bb1ae6c9ded613352f363&amp;s=140" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">sinoon</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">沧浪之水清兮，可以濯我衣；沧浪之水浊兮，可以濯我足。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="http://github.com/sinoon" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="mailto:sinoon1218@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-backbone-fundamentals-前言" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/25/backbone-fundamentals-前言/" class="article-date">
+  	<time datetime="2015-08-25T14:29:57.000Z" itemprop="datePublished">2015-08-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      backbone-fundamentals 前言
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/backbone-fundamentals/">backbone-fundamentals</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Prelude">Prelude</h2><p><img src="img/logo.jpg" alt=""></p>
+<p>很久以前，“富数据web应用”(data-rich web)是一个矛盾的说法。但现在，这种web应用随处可见，并且你需要知道如何构建它们。</p>
+<p>传统意义上来讲，web应用把繁重的数据放置在服务器端，服务器再把载入完成的HTML页面推向浏览器。因此，客户端那边的JavaScript被限制住无法提升用户体验。到了现在，这种情况被转变了——客户端应用可以在需要的地方，从服务器上拉去原始数据并在浏览器里面渲染这些数据。</p>
+<p>想一下Ajax技术的购物车向里面添加物品的时候而不需要刷新整个页面。起初，jQuery成为处理这种需求的范例。它的原理就是发起Ajax请求然后更新页面里的文本以及其他东西。然而，这种jQuery所依赖的模式使得我们要把数据模型隐式的放在客户端。随着服务器不再是唯一知道我们物品数量的地方，这就暗示这种演变自然而然的会有一些波折。（不太会翻译，原文是：it was a hint that there was a natural tension and pull of this evolution.）</p>
+<p>然而，随着与服务器交互的无规则的代码的增长，代码变得臃肿并且越来越复杂。好的架构在客户端上变得不可或缺 —— 你无法仅凭一些厉害的jQuery代码保持你的应用的健壮性。更有可能的是，你最终会在业务逻辑中陷入噩梦般的UI callbacks，最终也逃避不了被下一个继承你代码的人丢弃的命运。</p>
+<p>谢天谢地的是，有很多并且还将有更多Javascript库可以帮助你提升代码的架构和可维护性，使得人们可以非常容易的构建健壮的界面而不需要付出太多的精力。<a href="http://documentclud.github.com/backbone/" target="_blank" rel="external">Backbone.js</a> 迅速成为解决这类问题的最流行开源框架之一，这本书将会带领你来进行一个深入的实践。</p>
+<p>在刚开始学习基本知识的时候，通过一些练习，去学习如何在构建应用的时候，同时保持其组织性以及可维护性。如果你是希望自己写的代码拥有更好的可读性、架构、可扩展性，这份指南可以帮上你。</p>
+<p>提升开发者的水平对我来说很重要，这也是为什么我给这本书使用 Creative Commons Atribution-NonCommercial-ShareAlike 3.0 Unported <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="external">license</a>.欢迎大家来修正存在的问题，并且我很希望我们可以保持社区一直都有最新的源码。</p>
+<p>我还要感谢<a href="https://github.com/jashkenas" target="_blank" rel="external">Jeremy Ashkenas</a> 和 <a href="http://www.documentcloud.org" target="_blank" rel="external">DocumentCloud</a> 创建了 Backbone.js ，以及<a href="https://github.com/addyosmani/backbone-fundamentals/contributors" target="_blank" rel="external">社区成员</a>的贡献使得这个项目的发展完全超出了我的想象。<br><a id="more"></a></p>
+<h2 id="目标读者">目标读者</h2><p>这本书的目标读者是那些希望学习使他们前端代码拥有更好架构的初级到中级开发者。在这本教程里，JavaScript基础是需要的，不过，我会尽可能的提供一些关于这些概念的基本注释。</p>
+<h2 id="致谢">致谢</h2><p>我非常感谢那些技术审核同仁们帮助校验和修正改进这本书。他们的知识，精力和热情使得这本书迅速成为一个很好的学习资料，并且，他们将继续致力于此。感谢他们：</p>
+<ul>
+<li><a href="https://github.com/dcmaf" target="_blank" rel="external">Marc Friedman</a></li>
+<li><a href="https://github.com/derickbailey" target="_blank" rel="external">Derick Bailey</a></li>
+<li><a href="https://github.com/jashkenas" target="_blank" rel="external">Jeremy Ashkenas</a></li>
+<li><a href="https://github.com/samuelclay" target="_blank" rel="external">Samuel Clay</a></li>
+<li><a href="http://github.com/wibblymat" target="_blank" rel="external">Mat Scales</a></li>
+<li><a href="https://github.com/alexgraul" target="_blank" rel="external">Alex Graul</a></li>
+<li><a href="https://github.com/g6scheme" target="_blank" rel="external">Dusan Gledovic</a></li>
+<li><a href="https://github.com/sindresorhus" target="_blank" rel="external">Sindre Sorhus</a></li>
+</ul>
+<p>同时，我也还要感谢我挚爱的家人，感谢他们在我写作此书期间的耐心陪伴与支持。同样的，也要感谢我杰出的编辑 Mary Treseler。</p>
+<h2 id="相关人员">相关人员</h2><p>没有他们这些其他开发人员和作者在社区贡献的时间和心血，这本书将无法完成。我要向他们表示感谢：</p>
+<ul>
+<li>Derick and Marc (once again)</li>
+<li><a href="https://github.com/eastridge" target="_blank" rel="external">Ryan Eastridge</a></li>
+<li><a href="https://github.com/jackfranklin" target="_blank" rel="external">Jack Franklin</a></li>
+<li><a href="https://github.com/raDiesle" target="_blank" rel="external">David Amend</a></li>
+<li><a href="https://github.com/mdb" target="_blank" rel="external">Mike Ball</a></li>
+<li>Will Sulzer</li>
+<li><a href="https://github.com/ugisozols" target="_blank" rel="external">Uģis Ozols</a></li>
+<li><a href="https://github.com/Ekengren" target="_blank" rel="external">Björn Ekengren</a></li>
+</ul>
+<p>同时还有他们这些写杰出的<a href="https://github.com/addyosmani/backbone-fundamentals/graphs/contributors" target="_blank" rel="external">贡献者</a>使得这个项目变得可能。</p>
+<h2 id="目标版本">目标版本</h2><p>本书开发 Backbone.js 应用对应版本是 Backbone.js 1.1.x (Underscore 1.6.x)，并且将会主动的去更新到最新版本包括最近的一些改动。如果可能的话，当你发现书中的例子在使用更新的一个版本时候出现问题，请查阅官方<a href="http://backbonejs.org/#upgrading" target="_blank" rel="external">升级指南</a>，它会指导如何在版本变化的情况下工作。当然，StackOverflow 同样包含很多优秀的例子，那些例子是其他用户在处理版本升级时候的代码。</p>
+<h2 id="阅读">阅读</h2><p>我会假设你对于JavaScript有基本的掌握，同时，一些基本的概念将会被跳过，比如对象字面量。如果你需要对于这门语言需要更多的学习，我很乐意为你推荐：</p>
+<ul>
+<li><a href="http://eloquentjavascript.net/" target="_blank" rel="external">Eloquent JavaScript</a></li>
+<li><a href="http://shop.oreilly.com/product/9780596805531.do" target="_blank" rel="external">JavaScript: The Definitive Guide</a> by David Flanagan (O’Reilly)</li>
+<li><a href="http://www.informit.com/store/effective-javascript-68-specific-ways-to-harness-the-9780321812186" target="_blank" rel="external">Effective JavaScript</a> by David Herman (Pearson)</li>
+<li><a href="http://shop.oreilly.com/product/9780596517748.do" target="_blank" rel="external">JavaScript: The Good Parts</a> by Douglas Crockford (O’Reilly)</li>
+<li><a href="http://www.amazon.com/Object-Oriented-Javascript-Stoyan-Stefanov/dp/1847194141" target="_blank" rel="external">Object-Oriented JavaScript</a> by Stoyan Stefanov (Packt Publishing)</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/08/25/express-框架：Can-t-set-headers-after-they-are-sent-错误的一个原因/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">express 框架：Can&#39;t set headers after they are sent 错误的一个原因</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="backbone-fundamentals-前言" data-title="backbone-fundamentals 前言" data-url="http://yoursite.com/2015/08/25/backbone-fundamentals-前言/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"canglang"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 sinoon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
