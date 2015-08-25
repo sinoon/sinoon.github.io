@@ -34,7 +34,7 @@ var Instagram = (function(){
 		setTimeout(function(){
 			preLoad(data);
 		},3000);
-		
+
 		$("a[rel=example_group]").fancybox();
 	}
 

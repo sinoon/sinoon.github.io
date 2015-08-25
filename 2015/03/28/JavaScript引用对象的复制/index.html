@@ -14,8 +14,7 @@ Null
 Undefined
 对象
 
-其中，是分为 基本类型 和 引用类型。Boolean、String、Number、Null、Undefined都是基本类型。基本类型是按值访问的，意思是说，操作的是保存在变量中的实际值。
-引用类型的值是保存在内存中的对">
+其中，是分为 基本类型 和 引用类型。Boolean、String、Number、Null、Undefined都是基本类型。基本类型是按值访问的，意思是说，操作的是保存在变量中的实际值。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript引用对象的复制">
 <meta property="og:url" content="http://yoursite.com/2015/03/28/JavaScript引用对象的复制/index.html">
@@ -29,9 +28,8 @@ Null
 Undefined
 对象
 
-其中，是分为 基本类型 和 引用类型。Boolean、String、Number、Null、Undefined都是基本类型。基本类型是按值访问的，意思是说，操作的是保存在变量中的实际值。
-引用类型的值是保存在内存中的对">
-<meta property="og:updated_time" content="2015-04-01T13:41:49.000Z">
+其中，是分为 基本类型 和 引用类型。Boolean、String、Number、Null、Undefined都是基本类型。基本类型是按值访问的，意思是说，操作的是保存在变量中的实际值。">
+<meta property="og:updated_time" content="2015-08-25T03:42:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript引用对象的复制">
 <meta name="twitter:description" content="JavaScript引用对象复制JavaScript有6种数据类型，分别是：
@@ -43,8 +41,7 @@ Null
 Undefined
 对象
 
-其中，是分为 基本类型 和 引用类型。Boolean、String、Number、Null、Undefined都是基本类型。基本类型是按值访问的，意思是说，操作的是保存在变量中的实际值。
-引用类型的值是保存在内存中的对">
+其中，是分为 基本类型 和 引用类型。Boolean、String、Number、Null、Undefined都是基本类型。基本类型是按值访问的，意思是说，操作的是保存在变量中的实际值。">
   
     <link rel="alternative" href="/atom.xml" title="沧浪" type="application/atom+xml">
   
@@ -238,8 +235,7 @@ Undefined
 <li>Undefined</li>
 <li>对象</li>
 </ul>
-<p>其中，是分为 <code>基本类型</code> 和 <code>引用类型</code>。<br>Boolean、String、Number、Null、Undefined都是基本类型。基本类型是按值访问的，意思是说，操作的是保存在变量中的实际值。</p>
-<p>引用类型的值是保存在内存中的对象。因为JavaScript不允许直接操作对象的内存空间，所以，在操作对象的时候，实际上是操作对象的引用。</p>
+<p>其中，是分为 <code>基本类型</code> 和 <code>引用类型</code>。<br>Boolean、String、Number、Null、Undefined都是基本类型。基本类型是按值访问的，意思是说，操作的是保存在变量中的实际值。<br><a id="more"></a><br>引用类型的值是保存在内存中的对象。因为JavaScript不允许直接操作对象的内存空间，所以，在操作对象的时候，实际上是操作对象的引用。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> another_num = num; <span class="comment">// 都是10</span></span><br><span class="line"></span><br><span class="line">another_num++; <span class="comment">// anther_num的值是11</span></span><br><span class="line"><span class="built_in">console</span>.log(another_num); <span class="comment">// 11</span></span><br><span class="line"><span class="built_in">console</span>.log(num); <span class="comment">// 而num的值还是10</span></span><br></pre></td></tr></table></figure>
 <p>引用对象表现的是这样：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> example = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="keyword">var</span> another_example = example;</span><br><span class="line"></span><br><span class="line">another_example.push(<span class="number">6</span>); <span class="comment">// 向another_example尾部压入一个数字</span></span><br><span class="line"><span class="built_in">console</span>.log(another_example); <span class="comment">// [1, 2, 3, 4, 5, 6]</span></span><br><span class="line"><span class="built_in">console</span>.log(example); <span class="comment">// [1, 2, 3, 4, 5, 6] 输出example发现，example也改变了。</span></span><br></pre></td></tr></table></figure></p>
 <p>对于对象的操作也是如此。</p>
