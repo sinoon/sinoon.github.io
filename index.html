@@ -113,7 +113,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript-对象-复制/" style="font-size: 10px;">JavaScript 对象 复制</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/node-redis-msgpack-messagepack/" style="font-size: 10px;">node redis msgpack messagepack</a> <a href="/tags/webhook-github-nodejs/" style="font-size: 10px;">webhook github nodejs</a>
+						<a href="/tags/JavaScript-对象-复制/" style="font-size: 10px;">JavaScript 对象 复制</a> <a href="/tags/express-服务器开发-nodejs/" style="font-size: 10px;">express 服务器开发 nodejs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/node-redis-msgpack-messagepack/" style="font-size: 10px;">node redis msgpack messagepack</a> <a href="/tags/webhook-github-nodejs/" style="font-size: 10px;">webhook github nodejs</a>
 					</div>
 				</section>
 				
@@ -172,6 +172,64 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-express-框架：Can-t-set-headers-after-they-are-sent-错误的一个原因" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/25/express-框架：Can-t-set-headers-after-they-are-sent-错误的一个原因/" class="article-date">
+  	<time datetime="2015-08-25T02:33:34.000Z" itemprop="datePublished">2015-08-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/25/express-框架：Can-t-set-headers-after-they-are-sent-错误的一个原因/">express 框架：Can&#39;t set headers after they are sent 错误的一个原因</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在写接受github的Webhooks服务时，使用了shelljs库，用来执行github发来的仓库更新信息。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> shell = <span class="built_in">require</span>(<span class="string">'shelljs'</span>)</span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> router = express.Router()</span><br><span class="line"></span><br><span class="line">router.post(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 打印出github发来的所有信息</span></span><br><span class="line">    <span class="built_in">console</span>.log(req)</span><br><span class="line"></span><br><span class="line">    res.end(<span class="string">'ok'</span>)</span><br><span class="line"></span><br><span class="line">    shell.cs(<span class="string">'../'</span>) <span class="comment">// 注意这行</span></span><br><span class="line">    shell.exec(<span class="string">'git pull'</span>)</span><br><span class="line">	shell.exec(<span class="string">'pm2 restart all'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>结果怎么都提示<code>Can&#39;t set headers after they are sent</code>，通常这个原因都是已经使用过res.send等方法之后，又去设置header或者status导致的，但是我已经结束了请求，然后执行脚本，按说不可能出现这种问题。</p>
+<p>使用<code>postMan</code>自己模拟请求，发现确实返回<code>ok</code>，但是程序依然报错崩溃。</p>
+<p>后来发现第<code>11</code>行的一个代码写错了，应该是<code>shell.cd(&#39;../&#39;)</code>，导致后面代码直接报错，不过我用<code>pm2</code>看日志的时候没有发现<code>undefiend is not a function</code>之类的信息，反而直接是<code>express</code>报错。</p>
+<p>当我修正这个之后，就没有问题了。通常看着<code>Can&#39;t set headers after they are sent</code>这样的错误，都是直接去找处理请求方面的问题，没想到在之后代码报错也会产生这样的错误。</p>
+<p>留下此篇，给看到的人提个醒。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express-服务器开发-nodejs/">express 服务器开发 nodejs</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
   
     <article id="post-github-webhook服务签名算法-nodejs" class="article article-type-post" itemscope itemprop="blogPost">
   
