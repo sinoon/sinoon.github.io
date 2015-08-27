@@ -18,7 +18,7 @@
 无奈因为买的最便宜的机器，内存只有500M，所以，只能使用虚拟内存使用。
 这种被kill的情况，也会发生在开虚拟机的时候。
 命令如下：因为一般我登录DO的服务器都是直接用root身份的，这样说起来是不安全的，一个不小心容易出事。所以，以下命令，因为登录的身份不同">
-<meta property="og:updated_time" content="2015-08-26T02:39:07.000Z">
+<meta property="og:updated_time" content="2015-08-27T06:34:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="npm install 的时候进程自动被kill">
 <meta name="twitter:description" content="今天在DigitalOcean的机器上，安装blog，打算作为自己的博客使用，不过在npm install的时候，总是被系统kill掉。
@@ -212,7 +212,7 @@
         <p>今天在DigitalOcean的机器上，安装<code>blog</code>，打算作为自己的博客使用，不过在<code>npm install</code>的时候，总是被系统<code>kill</code>掉。</p>
 <p>无奈因为买的最便宜的机器，内存只有500M，所以，只能使用虚拟内存使用。</p>
 <p>这种被<code>kill</code>的情况，也会发生在开虚拟机的时候。</p>
-<p>命令如下：<br>因为一般我登录DO的服务器都是直接用root身份的，这样说起来是不安全的，一个不小心容易出事。<br>所以，以下命令，因为登录的身份不同，是可以把sudo去掉的。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 查看现在是否已经挂在了虚拟内存</span><br><span class="line">// 空的是正常的</span><br><span class="line">sudo swapon <span class="operator">-s</span></span><br></pre></td></tr></table></figure></p>
+<p>命令如下：<br>因为一般我登录DO的服务器都是直接用root身份的，这样说起来是不安全的，一个不小心容易出事。<br>所以，以下命令，因为登录的身份不同，是可以把sudo去掉的。<br><a id="more"></a><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 查看现在是否已经挂在了虚拟内存</span><br><span class="line">// 空的是正常的</span><br><span class="line">sudo swapon <span class="operator">-s</span></span><br></pre></td></tr></table></figure></p>
 <p>创建一个1G的文件。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fallocate <span class="operator">-l</span> <span class="number">1</span>G /swapfile</span><br></pre></td></tr></table></figure></p>
 <p>谨慎起见，看一下创建的对不对。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -lh /swapfile</span><br></pre></td></tr></table></figure></p>
 <p>设置文件权限，这一步可选。只是出于安全考虑，避免文件被其他用户随意读写。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod <span class="number">600</span> /swapfile</span><br></pre></td></tr></table></figure></p>

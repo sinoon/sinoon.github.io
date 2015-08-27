@@ -195,20 +195,7 @@
 <h2 id="设置端口转发">设置端口转发</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /Library/Preferences/VMware Fusion/vmnet8&#10;sudo vim nat.conf</span><br></pre></td></tr></table></figure>
 <p>找到<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[incomingtcp]&#10;&#10;# Use these with care - anyone can enter into your VM through these...&#10;# The format and example are as follows:&#10;#&#60;external port number&#62; = &#60;VM&#39;s IP address&#62;:&#60;VM&#39;s port number&#62;</span><br></pre></td></tr></table></figure></p>
 <p>在下面添加一行<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// 9000&#26159;&#25105;&#26412;&#22320;&#36716;&#21457;&#30340;&#31471;&#21475;&#65292;&#20551;&#35774;&#26412;&#26426;IP&#22320;&#22336;:192.168.1.82&#65292;&#37027;&#20040;&#21516;&#20107;&#27979;&#35797;&#26102;&#35775;&#38382;192.168.1.82:9000&#21363;&#21487;&#35775;&#38382;&#21040;&#34394;&#25311;&#26426;&#10;// 9000&#31471;&#21475;&#30340;&#35831;&#27714;&#65292;&#36716;&#21457;&#21040;&#34394;&#25311;&#26426;&#30340;80&#31471;&#21475;&#19978;&#10;9000 = 172.16.59.131:80</span><br></pre></td></tr></table></figure></p>
-<p>到这一步虚拟机端口转发就做好了，<code>Esc</code>+<code>ZZ</code>或者<code>Esc</code>+<code>wq</code>保存并退出。</p>
-<p>到这里虽然设置好了端口转发，但是并没有应用上，需要重启服务或者虚拟机才可以。<br>通过一下命令可以直接重启服务<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --stop&#10;sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start</span><br></pre></td></tr></table></figure></p>
-<p>到这一步端口转发生效，不过如果重启电脑的话，虚拟机的ip地址还是有可能会变的。</p>
-<h2 id="固定虚拟机ip地址">固定虚拟机ip地址</h2><p>还是在<code>/Library/Preferences/VMware Fusion/vmnet8</code>目录下，找到<code>dhcpd.conf</code>文件。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim dhcpd.conf</span><br></pre></td></tr></table></figure></p>
-<p>将会看到这样一段内容，它描述了通过DHCP分配ip地址的设置<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subnet 172.16.59.0 netmask 255.255.255.0 &#123;// &#23376;&#32593;&#25513;&#30721;&#10;        range 172.16.59.128 172.16.59.254;// &#32593;&#32476;&#27573;&#22788;&#20110;128~254&#20043;&#38388;&#65292;&#20063;&#23601;&#26159;&#35828;&#34394;&#25311;&#26426;&#30340;ip&#22320;&#22336;&#21482;&#21487;&#33021;&#34987;&#20998;&#37197;&#21040;&#20854;&#20013;&#30340;&#19968;&#20010;&#10;        option broadcast-address 172.16.59.255;// &#24191;&#25773;&#22320;&#22336;&#65292;&#26080;&#27861;&#34987;&#20998;&#37197;&#10;        option domain-name-servers 172.16.59.2;// DNS&#22320;&#22336;&#10;        option domain-name localdomain;&#10;        default-lease-time 1800;                # default is 30 minutes&#10;        max-lease-time 7200;                    # default is 2 hours&#10;        option netbios-name-servers 172.16.59.2;&#10;        option routers 172.16.59.2;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>记下这几个有注释的几个地址，进入虚拟机。<br>我的虚拟机是win7。<br>打开<code>TCP/IPv4</code>属性设置，如下图：<br><img src="http://i3.tietuku.com/bada1525b352c50a.png" alt="设置"></p>
-<ul>
-<li>IP地址处于<code>128~254</code>之间的任何一个即可</li>
-<li>子网掩码和上面配置文件里要一致</li>
-<li>默认网关是设置中的广播地址</li>
-<li>下面的DNS地址一定要写，不然没法上网，一样是和配置文件中的一样<br>设置好之后，默认会重新选择一下网络环境是<code>家庭</code>、<code>工作</code>还是<code>公共</code>等。</li>
-</ul>
-<p>至此，虚拟机ip地址就固定下来了。</p>
-
+<p>到这一步虚拟机端口转发就做好了，<code>Esc</code>+<code>ZZ</code>或者<code>Esc</code>+<code>wq</code>保存并退出。<br>
       
     </div>
     
@@ -221,6 +208,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2015/08/26/VMware-Fusion-Nat链接方式下固定IP/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -265,16 +256,7 @@
         <p>今天在DigitalOcean的机器上，安装<code>blog</code>，打算作为自己的博客使用，不过在<code>npm install</code>的时候，总是被系统<code>kill</code>掉。</p>
 <p>无奈因为买的最便宜的机器，内存只有500M，所以，只能使用虚拟内存使用。</p>
 <p>这种被<code>kill</code>的情况，也会发生在开虚拟机的时候。</p>
-<p>命令如下：<br>因为一般我登录DO的服务器都是直接用root身份的，这样说起来是不安全的，一个不小心容易出事。<br>所以，以下命令，因为登录的身份不同，是可以把sudo去掉的。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 查看现在是否已经挂在了虚拟内存</span><br><span class="line">// 空的是正常的</span><br><span class="line">sudo swapon <span class="operator">-s</span></span><br></pre></td></tr></table></figure></p>
-<p>创建一个1G的文件。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fallocate <span class="operator">-l</span> <span class="number">1</span>G /swapfile</span><br></pre></td></tr></table></figure></p>
-<p>谨慎起见，看一下创建的对不对。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -lh /swapfile</span><br></pre></td></tr></table></figure></p>
-<p>设置文件权限，这一步可选。只是出于安全考虑，避免文件被其他用户随意读写。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod <span class="number">600</span> /swapfile</span><br></pre></td></tr></table></figure></p>
-<p>设置交换区域<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkswap /swapfile</span><br></pre></td></tr></table></figure></p>
-<p>启用文件<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo swapon /swapfile</span><br></pre></td></tr></table></figure></p>
-<p>这个时候，已经挂载上虚拟内存了，可以运行一下一开始的那个命令查看。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo swapon <span class="operator">-s</span></span><br></pre></td></tr></table></figure></p>
-<p>虽然成功挂载了虚拟内存，但是还有一个问题就是下一次机器重启的时候不会自动挂载上。<br>需要使用下面的命令</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 打开 fstab 文件。</span><br><span class="line">sudo vim /etc/fstab</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 告诉操作系统自动使用swap文件</span><br><span class="line">/swapfile   none    swap    sw    <span class="number">0</span>   <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>命令如下：<br>因为一般我登录DO的服务器都是直接用root身份的，这样说起来是不安全的，一个不小心容易出事。<br>所以，以下命令，因为登录的身份不同，是可以把sudo去掉的。<br>
       
     </div>
     
@@ -287,6 +269,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2015/08/26/npm-install-的时候进程自动被kill/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -387,50 +373,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言">前言</h2><p><img src="img/logo.jpg" alt=""></p>
-<p>很久以前，“富数据web应用”(data-rich web)是一个矛盾的说法。但现在，这种web应用随处可见，并且你需要知道如何构建它们。</p>
+        <h2 id="前言">前言</h2><p>很久以前，“富数据web应用”(data-rich web)是一个矛盾的说法。但现在，这种web应用随处可见，并且你需要知道如何构建它们。</p>
 <p>传统意义上来讲，web应用把繁重的数据放置在服务器端，服务器再把载入完成的HTML页面推向浏览器。因此，客户端那边的JavaScript被限制住无法提升用户体验。到了现在，这种情况被转变了——客户端应用可以在需要的地方，从服务器上拉去原始数据并在浏览器里面渲染这些数据。</p>
 <p>想一下Ajax技术的购物车向里面添加物品的时候而不需要刷新整个页面。起初，jQuery成为处理这种需求的范例。它的原理就是发起Ajax请求然后更新页面里的文本以及其他东西。然而，这种jQuery所依赖的模式使得我们要把数据模型隐式的放在客户端。随着服务器不再是唯一知道我们物品数量的地方，这就暗示这种演变自然而然的会有一些波折。（不太会翻译，原文是：it was a hint that there was a natural tension and pull of this evolution.）</p>
 <p>然而，随着与服务器交互的无规则的代码的增长，代码变得臃肿并且越来越复杂。好的架构在客户端上变得不可或缺 —— 你无法仅凭一些厉害的jQuery代码保持你的应用的健壮性。更有可能的是，你最终会在业务逻辑中陷入噩梦般的UI callbacks，最终也逃避不了被下一个继承你代码的人丢弃的命运。</p>
-<p>谢天谢地的是，有很多并且还将有更多Javascript库可以帮助你提升代码的架构和可维护性，使得人们可以非常容易的构建健壮的界面而不需要付出太多的精力。<a href="http://documentclud.github.com/backbone/" target="_blank" rel="external">Backbone.js</a> 迅速成为解决这类问题的最流行开源框架之一，这本书将会带领你来进行一个深入的实践。</p>
+<p>谢天谢地的是，有很多并且还将有更多Javascript库可以帮助你提升代码的架构和可维护性，使得人们可以非常容易的构建健壮的界面而不需要付出太多的精力。<a href="http://documentclud.github.com/backbone/">Backbone.js</a> 迅速成为解决这类问题的最流行开源框架之一，这本书将会带领你来进行一个深入的实践。</p>
 <p>在刚开始学习基本知识的时候，通过一些练习，去学习如何在构建应用的时候，同时保持其组织性以及可维护性。如果你是希望自己写的代码拥有更好的可读性、架构、可扩展性，这份指南可以帮上你。</p>
-<p>提升开发者的水平对我来说很重要，这也是为什么我给这本书使用 Creative Commons Atribution-NonCommercial-ShareAlike 3.0 Unported <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="external">license</a>.欢迎大家来修正存在的问题，并且我很希望我们可以保持社区一直都有最新的源码。</p>
-<p>我还要感谢<a href="https://github.com/jashkenas" target="_blank" rel="external">Jeremy Ashkenas</a> 和 <a href="http://www.documentcloud.org" target="_blank" rel="external">DocumentCloud</a> 创建了 Backbone.js ，以及<a href="https://github.com/addyosmani/backbone-fundamentals/contributors" target="_blank" rel="external">社区成员</a>的贡献使得这个项目的发展完全超出了我的想象。</p>
-<h2 id="目标读者">目标读者</h2><p>这本书的目标读者是那些希望学习使他们前端代码拥有更好架构的初级到中级开发者。在这本教程里，JavaScript基础是需要的，不过，我会尽可能的提供一些关于这些概念的基本注释。</p>
-<h2 id="致谢">致谢</h2><p>我非常感谢那些技术审核同仁们帮助校验和修正改进这本书。他们的知识，精力和热情使得这本书迅速成为一个很好的学习资料，并且，他们将继续致力于此。感谢他们：</p>
-<ul>
-<li><a href="https://github.com/dcmaf" target="_blank" rel="external">Marc Friedman</a></li>
-<li><a href="https://github.com/derickbailey" target="_blank" rel="external">Derick Bailey</a></li>
-<li><a href="https://github.com/jashkenas" target="_blank" rel="external">Jeremy Ashkenas</a></li>
-<li><a href="https://github.com/samuelclay" target="_blank" rel="external">Samuel Clay</a></li>
-<li><a href="http://github.com/wibblymat" target="_blank" rel="external">Mat Scales</a></li>
-<li><a href="https://github.com/alexgraul" target="_blank" rel="external">Alex Graul</a></li>
-<li><a href="https://github.com/g6scheme" target="_blank" rel="external">Dusan Gledovic</a></li>
-<li><a href="https://github.com/sindresorhus" target="_blank" rel="external">Sindre Sorhus</a></li>
-</ul>
-<p>同时，我也还要感谢我挚爱的家人，感谢他们在我写作此书期间的耐心陪伴与支持。同样的，也要感谢我杰出的编辑 Mary Treseler。</p>
-<h2 id="相关人员">相关人员</h2><p>没有他们这些其他开发人员和作者在社区贡献的时间和心血，这本书将无法完成。我要向他们表示感谢：</p>
-<ul>
-<li>Derick and Marc (once again)</li>
-<li><a href="https://github.com/eastridge" target="_blank" rel="external">Ryan Eastridge</a></li>
-<li><a href="https://github.com/jackfranklin" target="_blank" rel="external">Jack Franklin</a></li>
-<li><a href="https://github.com/raDiesle" target="_blank" rel="external">David Amend</a></li>
-<li><a href="https://github.com/mdb" target="_blank" rel="external">Mike Ball</a></li>
-<li>Will Sulzer</li>
-<li><a href="https://github.com/ugisozols" target="_blank" rel="external">Uģis Ozols</a></li>
-<li><a href="https://github.com/Ekengren" target="_blank" rel="external">Björn Ekengren</a></li>
-</ul>
-<p>同时还有他们这些写杰出的<a href="https://github.com/addyosmani/backbone-fundamentals/graphs/contributors" target="_blank" rel="external">贡献者</a>使得这个项目变得可能。</p>
-<h2 id="目标版本">目标版本</h2><p>本书开发 Backbone.js 应用对应版本是 Backbone.js 1.1.x (Underscore 1.6.x)，并且将会主动的去更新到最新版本包括最近的一些改动。如果可能的话，当你发现书中的例子在使用更新的一个版本时候出现问题，请查阅官方<a href="http://backbonejs.org/#upgrading" target="_blank" rel="external">升级指南</a>，它会指导如何在版本变化的情况下工作。当然，StackOverflow 同样包含很多优秀的例子，那些例子是其他用户在处理版本升级时候的代码。</p>
-<h2 id="阅读">阅读</h2><p>我会假设你对于JavaScript有基本的掌握，同时，一些基本的概念将会被跳过，比如对象字面量。如果你需要对于这门语言需要更多的学习，我很乐意为你推荐：</p>
-<ul>
-<li><a href="http://eloquentjavascript.net/" target="_blank" rel="external">Eloquent JavaScript</a></li>
-<li><a href="http://shop.oreilly.com/product/9780596805531.do" target="_blank" rel="external">JavaScript: The Definitive Guide</a> by David Flanagan (O’Reilly)</li>
-<li><a href="http://www.informit.com/store/effective-javascript-68-specific-ways-to-harness-the-9780321812186" target="_blank" rel="external">Effective JavaScript</a> by David Herman (Pearson)</li>
-<li><a href="http://shop.oreilly.com/product/9780596517748.do" target="_blank" rel="external">JavaScript: The Good Parts</a> by Douglas Crockford (O’Reilly)</li>
-<li><a href="http://www.amazon.com/Object-Oriented-Javascript-Stoyan-Stefanov/dp/1847194141" target="_blank" rel="external">Object-Oriented JavaScript</a> by Stoyan Stefanov (Packt Publishing)</li>
-</ul>
-
+<p>提升开发者的水平对我来说很重要，这也是为什么我给这本书使用 Creative Commons Atribution-NonCommercial-ShareAlike 3.0 Unported <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">license</a>.欢迎大家来修正存在的问题，并且我很希望我们可以保持社区一直都有最新的源码。</p>
+<p>我还要感谢<a href="https://github.com/jashkenas">Jeremy Ashkenas</a> 和 <a href="http://www.documentcloud.org">DocumentCloud</a> 创建了 Backbone.js ，以及<a href="https://github.com/addyosmani/backbone-fundamentals/contributors">社区成员</a>的贡献使得这个项目的发展完全超出了我的想象。<br>
       
     </div>
     
@@ -443,6 +393,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2015/08/25/backbone-fundamentals-前言/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
