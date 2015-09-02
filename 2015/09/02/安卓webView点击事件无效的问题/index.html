@@ -4,17 +4,24 @@
   <meta charset="utf-8">
   <meta name="baidu-site-verification" content="MbCiZ4d8vl" />
   
-  <title>Tag: VMWareFusion 虚拟机 固定IP | 沧浪</title>
+  <title>安卓webView点击事件无效的问题 | 沧浪</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="人的一切痛苦，本质上都是对自己无能的愤怒">
-<meta property="og:type" content="website">
-<meta property="og:title" content="沧浪">
-<meta property="og:url" content="http://yoursite.com/tags/VMWareFusion-虚拟机-固定IP/index.html">
+  <meta name="description" content="前阵子应公司这边需求，开发嵌入在webView里面的页面，结果测试同学发现页面第一次载入的时候，是无法点击的，只有当页面滑动之后才可以点击。
+通过查看Eclipse里面的log发现，在点击的时候，webView报错，页面没有错误，页面的事件都没有触发。
+通过在页面载入之后的一瞬间执行12document.body.scrollHeight = 1;document.body.scrollHeigh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓webView点击事件无效的问题">
+<meta property="og:url" content="http://yoursite.com/2015/09/02/安卓webView点击事件无效的问题/index.html">
 <meta property="og:site_name" content="沧浪">
-<meta property="og:description" content="人的一切痛苦，本质上都是对自己无能的愤怒">
+<meta property="og:description" content="前阵子应公司这边需求，开发嵌入在webView里面的页面，结果测试同学发现页面第一次载入的时候，是无法点击的，只有当页面滑动之后才可以点击。
+通过查看Eclipse里面的log发现，在点击的时候，webView报错，页面没有错误，页面的事件都没有触发。
+通过在页面载入之后的一瞬间执行12document.body.scrollHeight = 1;document.body.scrollHeigh">
+<meta property="og:updated_time" content="2015-09-02T07:35:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="沧浪">
-<meta name="twitter:description" content="人的一切痛苦，本质上都是对自己无能的愤怒">
+<meta name="twitter:title" content="安卓webView点击事件无效的问题">
+<meta name="twitter:description" content="前阵子应公司这边需求，开发嵌入在webView里面的页面，结果测试同学发现页面第一次载入的时候，是无法点击的，只有当页面滑动之后才可以点击。
+通过查看Eclipse里面的log发现，在点击的时候，webView报错，页面没有错误，页面的事件都没有触发。
+通过在页面载入之后的一瞬间执行12document.body.scrollHeight = 1;document.body.scrollHeigh">
   
     <link rel="alternative" href="/atom.xml" title="沧浪" type="application/atom+xml">
   
@@ -162,53 +169,107 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-安卓webView点击事件无效的问题" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/08/26/VMware-Fusion-Nat链接方式下固定IP/" class="archive-article-date">
-  	<time datetime="2015-08-26T03:21:41.000Z" itemprop="datePublished">8月 26</time>
+    <div class="article-meta">
+      <a href="/2015/09/02/安卓webView点击事件无效的问题/" class="article-date">
+  	<time datetime="2015-09-02T07:35:10.000Z" itemprop="datePublished">2015-09-02</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/26/VMware-Fusion-Nat链接方式下固定IP/">VMware Fusion Nat链接方式下固定IP</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      安卓webView点击事件无效的问题
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMWareFusion-虚拟机-固定IP/">VMWareFusion 虚拟机 固定IP</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安卓-webView-点击无效/">安卓 webView 点击无效</a></li></ul>
 	</div>
 
-          
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前阵子应公司这边需求，开发嵌入在<code>webView</code>里面的页面，结果测试同学发现页面第一次载入的时候，是无法点击的，只有当页面滑动之后才可以点击。</p>
+<p>通过查看<code>Eclipse</code>里面的<code>log</code>发现，在点击的时候，<code>webView</code>报错，页面没有错误，页面的事件都没有触发。</p>
+<p>通过在页面载入之后的一瞬间执行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.scrollHeight = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">document</span>.body.scrollHeight = <span class="number">0</span>;</span><br></pre></td></tr></table></figure></p>
+<p>就可以了。</p>
+<p>小米部分机型存在即使这样做，也有部分点击会报错的问题。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/09/02/回龙观，联通，送的Moden兼路由器无法上网问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">回龙观，联通，送的Moden兼路由器无法上网问题</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="安卓webView点击事件无效的问题" data-title="安卓webView点击事件无效的问题" data-url="http://yoursite.com/2015/09/02/安卓webView点击事件无效的问题/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"canglang"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -234,9 +295,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}
