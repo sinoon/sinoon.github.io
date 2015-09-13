@@ -197,24 +197,6 @@
 <h3 id="Debian_or_Ubuntu">Debian or Ubuntu</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev</span><br></pre></td></tr></table></figure>
 <h3 id="Fedora,_CentOS_or_Red_Hat">Fedora, CentOS or Red Hat</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum groupinstall <span class="string">'Development Tools'</span> &amp;&amp; sudo yum install curl git irb m4 ruby texinfo bzip2-devel curl-devel expat-devel ncurses-devel zlib-devel</span><br></pre></td></tr></table></figure>
 <p>之后，运行安装脚本就好了。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby <span class="operator">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)</span>"</span></span><br></pre></td></tr></table></figure></p>
-<p>由于网络原因，在安装速度取决与当前环境连接<code>github</code>的速度。</p>
-<p>在安装的最后一步会提示输入<code>password</code>，<code>vagrant</code>的虚拟机实例默认的<code>password</code>是<code>vagrant</code>。</p>
-<h2 id="配置">配置</h2><p>安装好<code>linuxbrew</code>之后，需要把<code>shell</code>的环境设置一下，不然打<code>brew</code>的时候会提示找不到命令。<br>把下面的内容添加到<code>.bashrc</code> or <code>.zshrc</code>:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$HOME</span>/.linuxbrew/bin:<span class="variable">$PATH</span>"</span></span><br><span class="line"><span class="built_in">export</span> MANPATH=<span class="string">"<span class="variable">$HOME</span>/.linuxbrew/share/man:<span class="variable">$MANPATH</span>"</span></span><br><span class="line"><span class="built_in">export</span> INFOPATH=<span class="string">"<span class="variable">$HOME</span>/.linuxbrew/share/info:<span class="variable">$INFOPATH</span>"</span></span><br></pre></td></tr></table></figure>
-<p>这里也有一点需要注意，这三行需要放在最后一行。不然会无效的。</p>
-<p>添加好之后，可以选择运行<code>sourse .bashrc</code>或者<code>sourse .zshrc</code>来重新加载配置，或者重新登录<code>shell</code>。</p>
-<p>到这里，<code>linuxbrew</code>就安装好了，<code>brew</code>运行一下试试吧。</p>
-<h2 id="安装git报错">安装git报错</h2><p>我一直很喜欢最新版本，<code>ubuntu</code>下默认安装的<code>git</code>版本是<code>1.9.1</code>。所以，安装好<code>linuxbrew</code>之后的第一步，就是通过<code>brew</code>再安装一次<code>git</code>，替换掉现有的<code>git</code>。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install git`</span><br></pre></td></tr></table></figure>
-<p><code>brew</code>最厉害的地方就在于，它会自动分析依赖，然后安装响应的东西，不需要人工处理繁复的依赖。</p>
-<p>但是在<code>vagrant</code>下直接运行上面的命令会报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmp/tcl-tk--tk20150913-17770-afpei5/tk8.6.4/unix/../generic/tk.h:96:25: fatal error: X11/Xlib.h: No such file or directory&#10; #   include &#60;X11/Xlib.h&#62;&#10;                         ^&#10;compilation terminated.&#10;make: *** [tkStubLib.o] Error 1</span><br></pre></td></tr></table></figure></p>
-<p>原因在于<code>vagrant</code>是无界面的，所以没有<code>X11</code>相关的东西。</p>
-<p>理论上的解决方案自然是不安装<code>X11</code>有关的依赖，只是我不知道其中的命令。</p>
-<p>我推测这个问题可能比较小众，因为<code>linuxbrew</code>上才1K出头的<code>start</code>，知道的人可能不多，再用在<code>vagrant</code>下的人恐怕就更少了。</p>
-<p>搜了一圈在<code>linuxbrew</code>的<code>issue</code>中找到了答案：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install tcl-tk --without-tk</span><br></pre></td></tr></table></figure></p>
-<p>先这样安装<code>tcl</code>的依赖，然后再安装<code>git</code>就好了。</p>
-<p>当然，最好在安装之前先<code>brew update</code>或者<code>brew up</code>一下。</p>
-
       
     </div>
     
@@ -227,6 +209,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2015/09/13/vagrant-brew-install-git-error/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

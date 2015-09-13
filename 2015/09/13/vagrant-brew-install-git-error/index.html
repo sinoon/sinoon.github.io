@@ -20,7 +20,7 @@ Debian or Ubuntu1sudo apt-get ins">
 安装非常简单。
 安装首先身平台自带的安装工具yum或者apt-get安装依赖。
 Debian or Ubuntu1sudo apt-get ins">
-<meta property="og:updated_time" content="2015-09-13T06:08:15.000Z">
+<meta property="og:updated_time" content="2015-09-13T06:12:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vagrant brew install git error">
 <meta name="twitter:description" content="前言前几天因为需要在php5.4、Mysql环境中开发，所以准备搞一个虚拟机，跑一个vagrant。
@@ -219,6 +219,7 @@ Debian or Ubuntu1sudo apt-get ins">
 <h3 id="Debian_or_Ubuntu">Debian or Ubuntu</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev</span><br></pre></td></tr></table></figure>
 <h3 id="Fedora,_CentOS_or_Red_Hat">Fedora, CentOS or Red Hat</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum groupinstall <span class="string">'Development Tools'</span> &amp;&amp; sudo yum install curl git irb m4 ruby texinfo bzip2-devel curl-devel expat-devel ncurses-devel zlib-devel</span><br></pre></td></tr></table></figure>
 <p>之后，运行安装脚本就好了。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby <span class="operator">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)</span>"</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>由于网络原因，在安装速度取决与当前环境连接<code>github</code>的速度。</p>
 <p>在安装的最后一步会提示输入<code>password</code>，<code>vagrant</code>的虚拟机实例默认的<code>password</code>是<code>vagrant</code>。</p>
 <h2 id="配置">配置</h2><p>安装好<code>linuxbrew</code>之后，需要把<code>shell</code>的环境设置一下，不然打<code>brew</code>的时候会提示找不到命令。<br>把下面的内容添加到<code>.bashrc</code> or <code>.zshrc</code>:</p>
