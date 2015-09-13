@@ -104,7 +104,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript-对象-复制/" style="font-size: 10px;">JavaScript 对象 复制</a> <a href="/tags/VMWareFusion-虚拟机-固定IP/" style="font-size: 10px;">VMWareFusion 虚拟机 固定IP</a> <a href="/tags/backbone-fundamentals/" style="font-size: 10px;">backbone-fundamentals</a> <a href="/tags/css-定位-position/" style="font-size: 10px;">css 定位 position</a> <a href="/tags/express-服务器开发-nodejs/" style="font-size: 10px;">express 服务器开发 nodejs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/node-redis-msgpack-messagepack/" style="font-size: 10px;">node redis msgpack messagepack</a> <a href="/tags/npm-nodejs-install/" style="font-size: 10px;">npm nodejs install</a> <a href="/tags/webhook-github-nodejs/" style="font-size: 10px;">webhook github nodejs</a> <a href="/tags/安卓-webView-点击无效/" style="font-size: 10px;">安卓 webView 点击无效</a> <a href="/tags/微信-服务号/" style="font-size: 10px;">微信 服务号</a> <a href="/tags/联通-小米路由器-无法上网/" style="font-size: 10px;">联通 小米路由器 无法上网</a>
+						<a href="/tags/JavaScript-对象-复制/" style="font-size: 10px;">JavaScript 对象 复制</a> <a href="/tags/VMWareFusion-虚拟机-固定IP/" style="font-size: 10px;">VMWareFusion 虚拟机 固定IP</a> <a href="/tags/backbone-fundamentals/" style="font-size: 10px;">backbone-fundamentals</a> <a href="/tags/css-定位-position/" style="font-size: 10px;">css 定位 position</a> <a href="/tags/express-服务器开发-nodejs/" style="font-size: 10px;">express 服务器开发 nodejs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/node-redis-msgpack-messagepack/" style="font-size: 10px;">node redis msgpack messagepack</a> <a href="/tags/npm-nodejs-install/" style="font-size: 10px;">npm nodejs install</a> <a href="/tags/vagrant-brew-git-install-brew/" style="font-size: 10px;">vagrant brew-git-install-brew</a> <a href="/tags/webhook-github-nodejs/" style="font-size: 10px;">webhook github nodejs</a> <a href="/tags/安卓-webView-点击无效/" style="font-size: 10px;">安卓 webView 点击无效</a> <a href="/tags/微信-服务号/" style="font-size: 10px;">微信 服务号</a> <a href="/tags/联通-小米路由器-无法上网/" style="font-size: 10px;">联通 小米路由器 无法上网</a>
 					</div>
 				</section>
 				
@@ -163,6 +163,68 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Nodejs使用MsgPack存入到Redis的一个坑" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/04/01/Nodejs使用MsgPack存入到Redis的一个坑/" class="article-date">
+  	<time datetime="2015-04-01T13:44:06.000Z" itemprop="datePublished">2015-04-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/01/Nodejs使用MsgPack存入到Redis的一个坑/">Nodejs使用MsgPack存入到Redis的一个坑</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在做的项目中，需要用到往Redis中存入一些信息。之前都是用 <code>JSON.stringify()</code> 成字符串，再保存到Redis中，同时需要在Redis脚本中需要使用 <code>cjson.decode()</code> 命令，变成lua的table，再进行一些操作。<br>既然这样，那就不如用 <code>MessagePack</code> <a href="http://msgpack.org">官网</a>。<br><code>MessagePack</code> 简称 <code>msgpack</code> ，按照官网上所说，它 <code>like</code> Json，但是 <code>fast</code> and <code>small</code> ，我一看，矮油，这个很好啊，正好我需要多次调用json对象的压缩和解析。</p>
+<p>先安装它在node上的包 <code>msgpack5</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install msgpack5 --save</span><br></pre></td></tr></table></figure></p>
+<p>我在这里加上 <code>--save</code> ，这样在下载到本地时候，在当前目录下的 <code>package.json</code> 会自动添加依赖，带版本号滴呦，很省心有木有~</p>
+<p>在用到 <code>msgpack</code> 的js文件中引入即可。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> msgpack = <span class="built_in">require</span>(<span class="string">'msgpack5'</span>)();</span><br></pre></td></tr></table></figure></p>
+<p>注意，这里有个小坑，就是引入的时候，必须当做函数运行一下，也就是后面加上那对括号。不然使用的时候，是代码不是调用。<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-redis-msgpack-messagepack/">node redis msgpack messagepack</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/04/01/Nodejs使用MsgPack存入到Redis的一个坑/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-JavaScript引用对象的复制" class="article article-type-post" itemscope itemprop="blogPost">
   
