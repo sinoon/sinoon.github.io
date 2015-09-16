@@ -104,7 +104,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript-对象-复制/" style="font-size: 10px;">JavaScript 对象 复制</a> <a href="/tags/VMWareFusion-虚拟机-固定IP/" style="font-size: 10px;">VMWareFusion 虚拟机 固定IP</a> <a href="/tags/backbone-fundamentals/" style="font-size: 10px;">backbone-fundamentals</a> <a href="/tags/css-定位-position/" style="font-size: 10px;">css 定位 position</a> <a href="/tags/express-服务器开发-nodejs/" style="font-size: 10px;">express 服务器开发 nodejs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/node-redis-msgpack-messagepack/" style="font-size: 10px;">node redis msgpack messagepack</a> <a href="/tags/npm-nodejs-install/" style="font-size: 10px;">npm nodejs install</a> <a href="/tags/vagrant-brew-git-install-brew/" style="font-size: 10px;">vagrant brew-git-install-brew</a> <a href="/tags/webhook-github-nodejs/" style="font-size: 10px;">webhook github nodejs</a> <a href="/tags/安卓-webView-点击无效/" style="font-size: 10px;">安卓 webView 点击无效</a> <a href="/tags/微信-服务号/" style="font-size: 10px;">微信 服务号</a> <a href="/tags/联通-小米路由器-无法上网/" style="font-size: 10px;">联通 小米路由器 无法上网</a>
+						<a href="/tags/JavaScript-对象-复制/" style="font-size: 10px;">JavaScript 对象 复制</a> <a href="/tags/VMWareFusion-虚拟机-固定IP/" style="font-size: 10px;">VMWareFusion 虚拟机 固定IP</a> <a href="/tags/backbone-fundamentals/" style="font-size: 10px;">backbone-fundamentals</a> <a href="/tags/css-定位-position/" style="font-size: 10px;">css 定位 position</a> <a href="/tags/express-服务器开发-nodejs/" style="font-size: 10px;">express 服务器开发 nodejs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/node-redis-msgpack-messagepack/" style="font-size: 10px;">node redis msgpack messagepack</a> <a href="/tags/npm-nodejs-install/" style="font-size: 10px;">npm nodejs install</a> <a href="/tags/vagrant-brew-git-install-brew/" style="font-size: 10px;">vagrant brew-git-install-brew</a> <a href="/tags/webhook-github-nodejs/" style="font-size: 10px;">webhook github nodejs</a> <a href="/tags/安卓-webView-点击无效/" style="font-size: 10px;">安卓 webView 点击无效</a> <a href="/tags/微信-服务号/" style="font-size: 10px;">微信 服务号</a> <a href="/tags/联通-小米路由器-无法上网/" style="font-size: 10px;">联通 小米路由器 无法上网</a> <a href="/tags/自定义事件对象/" style="font-size: 10px;">自定义事件对象</a>
 					</div>
 				</section>
 				
@@ -163,6 +163,76 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-如何自定义事件对象" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/16/如何自定义事件对象/" class="article-date">
+  	<time datetime="2015-09-16T13:49:40.000Z" itemprop="datePublished">2015-09-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/16/如何自定义事件对象/">如何自定义事件对象</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前因为开发中需要在自己的函数中增加一个事件处理机制。可惜在浏览器环境下只能自定义，如果在<code>nodejs</code>环境下可以继承自<code>Event</code>对象。</p>
+<p>那么如何自己做一个<code>Event</code>类呢？</p>
+<p>分析需求：</p>
+<ul>
+<li>绑定事件 : on</li>
+<li>触发事件 : fire</li>
+<li>移除事件 : remove</li>
+</ul>
+<p>假设设计的api是这样的：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 绑定事件</span></span><br><span class="line">Event.on(<span class="string">'some-event'</span>,handleFunc);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 触发事件</span></span><br><span class="line">Event.fire(<span class="string">'some-event'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除事件</span></span><br><span class="line">Event.remove(<span class="string">'some-event'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>那么具体内部如何实现呢？</p>
+<p>首先，我们需要一个东西保存这个事件名和事件名对应的函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Event</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.eventList = &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Event.prototype.on = <span class="function"><span class="keyword">function</span>(<span class="params">eventName,fn</span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 不是string类型，就直接返回，不执行后面</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> eventName != <span class="string">"string"</span>) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 后面需要用到</span></span><br><span class="line">    <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 如果有多个事件，分割出来</span></span><br><span class="line">    eventName = eventName.split(<span class="string">" "</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 对每个事件进行遍历</span></span><br><span class="line">    eventName.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// 因为有可能对同一个事件绑定多个方法，那么就需要用一个数组来保存这个事件。</span></span><br><span class="line">        <span class="comment">// 因此，第一次的时候这个保存这个事件的数组不存在，所以需要用下面的方式创建出来</span></span><br><span class="line">        self.eventList[val] = self.event[val] || [];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 这里是当只有回调函数参数是函数时才会将其加入队列</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> fn == <span class="string">"function"</span>)&#123;</span><br><span class="line">            self.eventList[val].push(fn)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面是绑定事件，其实按照思路写下来也是很简单的。下面是触发事件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Event.prototype.fire = <span class="function"><span class="keyword">function</span>(<span class="params">eventName</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> eventName != <span class="string">"string"</span>) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 首先每个函数内部都可以取得一个`arguments`的类数组对象</span></span><br><span class="line">    <span class="comment">// 该对象保存着所有传递进来的参数</span></span><br><span class="line">    <span class="comment">// 也就是说，也可以通过arguments[0]来取得第一个传递进来的参数，以此类推。</span></span><br><span class="line">    <span class="comment">// 那么往往有这样一个需求，在触发事件的时候，需要传递进来参数，但是通常不确实需要传递进来多少个参数，这时我们可以通过这个arguments来取得传递进来的参数。</span></span><br><span class="line">    <span class="comment">// 但是有一个问题是，第一个参数是被触发的变量名，需要将第一个变量名剔除掉。</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 我们都知道数组对象有一个方法是`shift`，它会将数组的第一项去掉，并返回回来。</span></span><br><span class="line">    <span class="comment">// 但是arguments只是类数组，并不是数组，需要将它转换为数组</span></span><br><span class="line">    <span class="comment">// 最快的方式就是调用Array的slice方法，用call将slice方法的指针指向arguments，以此返回一个和arguments对象一样(参数一样)的数组</span></span><br><span class="line">    <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="comment">// 去掉第一个参数</span></span><br><span class="line">    args.shift();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 取得事件数组</span></span><br><span class="line">    <span class="keyword">var</span> eventList = <span class="keyword">this</span>.eventList[eventName];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(eventList <span class="keyword">instanceof</span> <span class="built_in">Array</span>)&#123;</span><br><span class="line">        eventList.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">            <span class="comment">// 如果只有一个参数，确实可以直接调用的</span></span><br><span class="line">            <span class="comment">// 但是因为参数是一个数组所以使用apply方法</span></span><br><span class="line">            val.apply(<span class="literal">null</span>,args)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>到此，触发也就写好了，注意，这里我都是使用了forEach方法，这个方法在IE8以下不支持，需要改成<code>for in</code>方法。</p>
+<p>其他的<code>remove</code>或者<code>once</code>等，也是在此基础上，比如<code>remove</code>就是找到之后删掉对应的方法，<code>once</code>是增加一个选项，在事件触发之后去掉该事件。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自定义事件对象/">自定义事件对象</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-vagrant-brew-install-git-error" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -719,68 +789,6 @@
 
       
 
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-github-webhook服务签名算法-nodejs" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/24/github-webhook服务签名算法-nodejs/" class="article-date">
-  	<time datetime="2015-08-24T12:16:27.000Z" itemprop="datePublished">2015-08-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/24/github-webhook服务签名算法-nodejs/">github - webhook服务签名算法 - nodejs</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言">前言</h2><p><code>webhook</code>是<code>github</code>推出的一项免费服务，当仓库出现变动（<code>push</code>、<code>issue</code>变动等）的时候，会向仓库设置的指定地址，发送一个post请求，请求包括非常多的内容。</p>
-<p>我自己开发的<code>weichat.io</code>部署在<code>DigitalOcean</code>上面，每次更新代码都要远程登录到服务器上手动更新代码。</p>
-<p>我初中(2004-2007)的一个数学老师，曾经说过，聪明的人都是很懒的，当时用来举例如何用最简单的方式解决题目。近几年也有看到文章讲过类似的话。正因为懒，所以才会有这么多工具出现。</p>
-<p>说了几句题外话，言归正传。一开始我找的方式是<code>git hook</code>，指定某个行为之后执行某个脚本，脚本就是<code>shell</code>。在网上搜了很多文章，觉得还是不够优雅。</p>
-<p>无意中看到<code>github</code>提供的<code>webhook</code>服务，设置方便，还可以配置签名。</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webhook-github-nodejs/">webhook github nodejs</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/08/24/github-webhook服务签名算法-nodejs/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>

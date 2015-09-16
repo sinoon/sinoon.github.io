@@ -104,7 +104,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript-对象-复制/" style="font-size: 10px;">JavaScript 对象 复制</a> <a href="/tags/VMWareFusion-虚拟机-固定IP/" style="font-size: 10px;">VMWareFusion 虚拟机 固定IP</a> <a href="/tags/backbone-fundamentals/" style="font-size: 10px;">backbone-fundamentals</a> <a href="/tags/css-定位-position/" style="font-size: 10px;">css 定位 position</a> <a href="/tags/express-服务器开发-nodejs/" style="font-size: 10px;">express 服务器开发 nodejs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/node-redis-msgpack-messagepack/" style="font-size: 10px;">node redis msgpack messagepack</a> <a href="/tags/npm-nodejs-install/" style="font-size: 10px;">npm nodejs install</a> <a href="/tags/vagrant-brew-git-install-brew/" style="font-size: 10px;">vagrant brew-git-install-brew</a> <a href="/tags/webhook-github-nodejs/" style="font-size: 10px;">webhook github nodejs</a> <a href="/tags/安卓-webView-点击无效/" style="font-size: 10px;">安卓 webView 点击无效</a> <a href="/tags/微信-服务号/" style="font-size: 10px;">微信 服务号</a> <a href="/tags/联通-小米路由器-无法上网/" style="font-size: 10px;">联通 小米路由器 无法上网</a>
+						<a href="/tags/JavaScript-对象-复制/" style="font-size: 10px;">JavaScript 对象 复制</a> <a href="/tags/VMWareFusion-虚拟机-固定IP/" style="font-size: 10px;">VMWareFusion 虚拟机 固定IP</a> <a href="/tags/backbone-fundamentals/" style="font-size: 10px;">backbone-fundamentals</a> <a href="/tags/css-定位-position/" style="font-size: 10px;">css 定位 position</a> <a href="/tags/express-服务器开发-nodejs/" style="font-size: 10px;">express 服务器开发 nodejs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/node-redis-msgpack-messagepack/" style="font-size: 10px;">node redis msgpack messagepack</a> <a href="/tags/npm-nodejs-install/" style="font-size: 10px;">npm nodejs install</a> <a href="/tags/vagrant-brew-git-install-brew/" style="font-size: 10px;">vagrant brew-git-install-brew</a> <a href="/tags/webhook-github-nodejs/" style="font-size: 10px;">webhook github nodejs</a> <a href="/tags/安卓-webView-点击无效/" style="font-size: 10px;">安卓 webView 点击无效</a> <a href="/tags/微信-服务号/" style="font-size: 10px;">微信 服务号</a> <a href="/tags/联通-小米路由器-无法上网/" style="font-size: 10px;">联通 小米路由器 无法上网</a> <a href="/tags/自定义事件对象/" style="font-size: 10px;">自定义事件对象</a>
 					</div>
 				</section>
 				
@@ -163,6 +163,68 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-github-webhook服务签名算法-nodejs" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/24/github-webhook服务签名算法-nodejs/" class="article-date">
+  	<time datetime="2015-08-24T12:16:27.000Z" itemprop="datePublished">2015-08-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/24/github-webhook服务签名算法-nodejs/">github - webhook服务签名算法 - nodejs</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言">前言</h2><p><code>webhook</code>是<code>github</code>推出的一项免费服务，当仓库出现变动（<code>push</code>、<code>issue</code>变动等）的时候，会向仓库设置的指定地址，发送一个post请求，请求包括非常多的内容。</p>
+<p>我自己开发的<code>weichat.io</code>部署在<code>DigitalOcean</code>上面，每次更新代码都要远程登录到服务器上手动更新代码。</p>
+<p>我初中(2004-2007)的一个数学老师，曾经说过，聪明的人都是很懒的，当时用来举例如何用最简单的方式解决题目。近几年也有看到文章讲过类似的话。正因为懒，所以才会有这么多工具出现。</p>
+<p>说了几句题外话，言归正传。一开始我找的方式是<code>git hook</code>，指定某个行为之后执行某个脚本，脚本就是<code>shell</code>。在网上搜了很多文章，觉得还是不够优雅。</p>
+<p>无意中看到<code>github</code>提供的<code>webhook</code>服务，设置方便，还可以配置签名。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webhook-github-nodejs/">webhook github nodejs</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/08/24/github-webhook服务签名算法-nodejs/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-Nodejs使用MsgPack存入到Redis的一个坑" class="article article-type-post" itemscope itemprop="blogPost">
   
