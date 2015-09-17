@@ -104,7 +104,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript-对象-复制/" style="font-size: 10px;">JavaScript 对象 复制</a> <a href="/tags/VMWareFusion-虚拟机-固定IP/" style="font-size: 10px;">VMWareFusion 虚拟机 固定IP</a> <a href="/tags/backbone-fundamentals/" style="font-size: 10px;">backbone-fundamentals</a> <a href="/tags/css-定位-position/" style="font-size: 10px;">css 定位 position</a> <a href="/tags/express-服务器开发-nodejs/" style="font-size: 10px;">express 服务器开发 nodejs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/node-redis-msgpack-messagepack/" style="font-size: 10px;">node redis msgpack messagepack</a> <a href="/tags/npm-nodejs-install/" style="font-size: 10px;">npm nodejs install</a> <a href="/tags/vagrant-brew-git-install-brew/" style="font-size: 10px;">vagrant brew-git-install-brew</a> <a href="/tags/webhook-github-nodejs/" style="font-size: 10px;">webhook github nodejs</a> <a href="/tags/安卓-webView-点击无效/" style="font-size: 10px;">安卓 webView 点击无效</a> <a href="/tags/微信-服务号/" style="font-size: 10px;">微信 服务号</a> <a href="/tags/联通-小米路由器-无法上网/" style="font-size: 10px;">联通 小米路由器 无法上网</a> <a href="/tags/自定义事件对象/" style="font-size: 10px;">自定义事件对象</a>
+						<a href="/tags/JavaScript-对象-复制/" style="font-size: 10px;">JavaScript 对象 复制</a> <a href="/tags/VMWareFusion-虚拟机-固定IP/" style="font-size: 10px;">VMWareFusion 虚拟机 固定IP</a> <a href="/tags/backbone-fundamentals/" style="font-size: 10px;">backbone-fundamentals</a> <a href="/tags/css-定位-position/" style="font-size: 10px;">css 定位 position</a> <a href="/tags/express-服务器开发-nodejs/" style="font-size: 10px;">express 服务器开发 nodejs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/node-redis-msgpack-messagepack/" style="font-size: 10px;">node redis msgpack messagepack</a> <a href="/tags/npm-nodejs-install/" style="font-size: 10px;">npm nodejs install</a> <a href="/tags/vagrant-brew-git-install-brew/" style="font-size: 10px;">vagrant brew-git-install-brew</a> <a href="/tags/webhook-github-nodejs/" style="font-size: 10px;">webhook github nodejs</a> <a href="/tags/分享-手Q-一般化分享/" style="font-size: 10px;">分享 手Q 一般化分享</a> <a href="/tags/安卓-webView-点击无效/" style="font-size: 10px;">安卓 webView 点击无效</a> <a href="/tags/微信-服务号/" style="font-size: 10px;">微信 服务号</a> <a href="/tags/联通-小米路由器-无法上网/" style="font-size: 10px;">联通 小米路由器 无法上网</a> <a href="/tags/自定义事件对象/" style="font-size: 10px;">自定义事件对象</a>
 					</div>
 				</section>
 				
@@ -163,6 +163,77 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-手Q一般化分享" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/17/手Q一般化分享/" class="article-date">
+  	<time datetime="2015-09-17T05:30:01.000Z" itemprop="datePublished">2015-09-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/17/手Q一般化分享/">手Q一般化分享</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在做一个需求，一般从客户端里分享出来的内容到QQ或者微信之类的地方都是设置好分享的图片、标题和内容的。</p>
+<p>但是如果用户再次分享的话，看到分享链接样子就不是一开始分享的样子了，手机QQ会自动从页面中读取内容，通常是第一个h*标签(h1~h5)，加上第一个<code>img</code>和<code>p</code>标签。</p>
+<p>那么如果希望用户看到的分享链接的样子和页面里面实际上的样子不太一样或者话语不同的话，那么通常就需要事先写好内容，或者服务器动态生成内容，然后将内容隐藏起来。</p>
+<p>在实际操作中，我发现有几个点需要注意：</p>
+<ol>
+<li>隐藏的内容不会被预先读取出来<br>如果用<code>display:none</code>的方式，不论是行内、页面内、还是外部样式表，都不会被预先读取。<br>同时，将<code>font-size</code>设置为<code>0</code>也是无效的。<br>通过使用<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.share</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">text-indent</span>:<span class="value">-<span class="number">999px</span></span><br><span class="line">&#125;</span></span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>的方式，可以将文字推出页面，但是这样页面原本有文字的部分依然会存在占位，所以还需要加上<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.share</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">text-indent</span>:<span class="value">-<span class="number">999px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">position</span>:<span class="value">absolut</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>让文字部分脱离文档流。</p>
+<ol>
+<li><p>对于图片可以一开始就使用<code>position:absolute</code>的方式，像这样：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.share-img</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">position</span>:<span class="value">absolute</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">top</span>:<span class="value">-<span class="number">999px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">left</span>:<span class="value">-<span class="number">999px</span></span><br><span class="line">&#125;</span></span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对于分享链接的预读取是有缓存的，多久不清楚，所以调试的时候需要在链接后面加上<code>?a=12312</code>随机的东西让其认为是不同的页面。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分享-手Q-一般化分享/">分享 手Q 一般化分享</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-如何自定义事件对象" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -729,66 +800,6 @@
         <p class="article-more-link">
           <a  href="/2015/08/25/backbone-fundamentals-前言/#more">more >></a>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-express-框架：Can-t-set-headers-after-they-are-sent-错误的一个原因" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/25/express-框架：Can-t-set-headers-after-they-are-sent-错误的一个原因/" class="article-date">
-  	<time datetime="2015-08-25T02:33:34.000Z" itemprop="datePublished">2015-08-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/25/express-框架：Can-t-set-headers-after-they-are-sent-错误的一个原因/">express 框架：Can&#39;t set headers after they are sent 错误的一个原因</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天在写接受github的Webhooks服务时，使用了shelljs库，用来执行github发来的仓库更新信息。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> shell = <span class="built_in">require</span>(<span class="string">'shelljs'</span>)</span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> router = express.Router()</span><br><span class="line"></span><br><span class="line">router.post(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 打印出github发来的所有信息</span></span><br><span class="line">    <span class="built_in">console</span>.log(req)</span><br><span class="line"></span><br><span class="line">    res.end(<span class="string">'ok'</span>)</span><br><span class="line"></span><br><span class="line">    shell.cs(<span class="string">'../'</span>) <span class="comment">// 注意这行</span></span><br><span class="line">    shell.exec(<span class="string">'git pull'</span>)</span><br><span class="line">	shell.exec(<span class="string">'pm2 restart all'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>结果怎么都提示<code>Can&#39;t set headers after they are sent</code>，通常这个原因都是已经使用过res.send等方法之后，又去设置header或者status导致的，但是我已经结束了请求，然后执行脚本，按说不可能出现这种问题。</p>
-<p>使用<code>postMan</code>自己模拟请求，发现确实返回<code>ok</code>，但是程序依然报错崩溃。</p>
-<p>后来发现第<code>11</code>行的一个代码写错了，应该是<code>shell.cd(&#39;../&#39;)</code>，导致后面代码直接报错，不过我用<code>pm2</code>看日志的时候没有发现<code>undefiend is not a function</code>之类的信息，反而直接是<code>express</code>报错。</p>
-<p>当我修正这个之后，就没有问题了。通常看着<code>Can&#39;t set headers after they are sent</code>这样的错误，都是直接去找处理请求方面的问题，没想到在之后代码报错也会产生这样的错误。</p>
-<p>留下此篇，给看到的人提个醒。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express-服务器开发-nodejs/">express 服务器开发 nodejs</a></li></ul>
-	</div>
-
-      
-
       
       <div class="clearfix"></div>
     </div>
