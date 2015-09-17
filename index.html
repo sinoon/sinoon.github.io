@@ -104,7 +104,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript-对象-复制/" style="font-size: 10px;">JavaScript 对象 复制</a> <a href="/tags/VMWareFusion-虚拟机-固定IP/" style="font-size: 10px;">VMWareFusion 虚拟机 固定IP</a> <a href="/tags/backbone-fundamentals/" style="font-size: 10px;">backbone-fundamentals</a> <a href="/tags/css-定位-position/" style="font-size: 10px;">css 定位 position</a> <a href="/tags/express-服务器开发-nodejs/" style="font-size: 10px;">express 服务器开发 nodejs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/node-redis-msgpack-messagepack/" style="font-size: 10px;">node redis msgpack messagepack</a> <a href="/tags/npm-nodejs-install/" style="font-size: 10px;">npm nodejs install</a> <a href="/tags/vagrant-brew-git-install-brew/" style="font-size: 10px;">vagrant brew-git-install-brew</a> <a href="/tags/webhook-github-nodejs/" style="font-size: 10px;">webhook github nodejs</a> <a href="/tags/分享-手Q-一般化分享/" style="font-size: 10px;">分享 手Q 一般化分享</a> <a href="/tags/安卓-webView-点击无效/" style="font-size: 10px;">安卓 webView 点击无效</a> <a href="/tags/微信-服务号/" style="font-size: 10px;">微信 服务号</a> <a href="/tags/联通-小米路由器-无法上网/" style="font-size: 10px;">联通 小米路由器 无法上网</a> <a href="/tags/自定义事件对象/" style="font-size: 10px;">自定义事件对象</a>
+						<a href="/tags/JavaScript-对象-复制/" style="font-size: 10px;">JavaScript 对象 复制</a> <a href="/tags/VMWareFusion-虚拟机-固定IP/" style="font-size: 10px;">VMWareFusion 虚拟机 固定IP</a> <a href="/tags/backbone-fundamentals/" style="font-size: 10px;">backbone-fundamentals</a> <a href="/tags/css-定位-position/" style="font-size: 10px;">css 定位 position</a> <a href="/tags/express-服务器开发-nodejs/" style="font-size: 10px;">express 服务器开发 nodejs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/node-redis-msgpack-messagepack/" style="font-size: 10px;">node redis msgpack messagepack</a> <a href="/tags/npm-nodejs-install/" style="font-size: 10px;">npm nodejs install</a> <a href="/tags/oh-my-zsh-git-主题/" style="font-size: 10px;">oh_my_zsh git 主题</a> <a href="/tags/vagrant-brew-git-install-brew/" style="font-size: 10px;">vagrant brew-git-install-brew</a> <a href="/tags/webhook-github-nodejs/" style="font-size: 10px;">webhook github nodejs</a> <a href="/tags/分享-手Q-一般化分享/" style="font-size: 10px;">分享 手Q 一般化分享</a> <a href="/tags/安卓-webView-点击无效/" style="font-size: 10px;">安卓 webView 点击无效</a> <a href="/tags/微信-服务号/" style="font-size: 10px;">微信 服务号</a> <a href="/tags/联通-小米路由器-无法上网/" style="font-size: 10px;">联通 小米路由器 无法上网</a> <a href="/tags/自定义事件对象/" style="font-size: 10px;">自定义事件对象</a>
 					</div>
 				</section>
 				
@@ -163,6 +163,70 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-去掉oh-my-zsh主题自带的git检查" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/17/去掉oh-my-zsh主题自带的git检查/" class="article-date">
+  	<time datetime="2015-09-17T05:46:55.000Z" itemprop="datePublished">2015-09-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/17/去掉oh-my-zsh主题自带的git检查/">去掉oh_my_zsh主题自带的git检查</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>oh_my_zsh</code>是一个非常好用和好看的命令行配置，它包含<code>自动补全</code>、<code>目录下git自动检查</code>、<code>主题</code>、<code>插件</code>等功能，给在命令行下工作的人提供了非常好的便利。</p>
+<p>前阵子配置<code>vagrant</code>虚拟机，为了打个环境给同事使用。考虑到有些命令需要在虚拟机里面完成，所以还是安装了一个<code>oh_my_zsh</code>。</p>
+<p>但是问题来了，在<code>oh_my_zsh</code>的默认主题中，当进入一个是<code>git</code>仓库的文件夹时，会自动读取<code>.git</code>里面的内容，了解当前的仓库状态，比如当前分支。可是在虚拟机里读取文件的速度要慢一些，这就会导致每一条命令都会检查一下当前仓库状态的这个行为会使得命令行开始输入的状态变的很慢。</p>
+<p>一开始我以为是<code>插件</code>的原因，去掉<code>git</code>插件，<code>sourse ~/.zshrc</code>重载配置之后，还是如此，后来发现是<code>主题</code>的缘故。</p>
+<p>我通常是比较懒的，既然默认主题有这个问题，那就找一个别的主题好了。</p>
+<p>可是在<code>oh_my_zsh</code>的<code>github</code>上的<code>theme</code>列表中，每个主题都是含有这个功能的，所以只有自己修改主题了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 进入用户主目录</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"></span><br><span class="line">// 进入oh_my_zsh的主题目录，这里保存着所有可以在其github上的主题库，我们只要改名字就可以引入对应的主题</span><br><span class="line"><span class="built_in">cd</span> .oh-my-zsh/themes</span><br><span class="line"></span><br><span class="line">// 编辑默认主题文件</span><br><span class="line">vim robbyrussell.zsh-theme</span><br></pre></td></tr></table></figure>
+<p>打开默认主题文件会发现其实就几行，像下面这样<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">local</span> ret_status=<span class="string">"%(?:%&#123;<span class="variable">$fg_bold</span>[green]%&#125;➜ :%&#123;<span class="variable">$fg_bold</span>[red]%&#125;➜ %s)"</span></span><br><span class="line">PROMPT=<span class="string">'$&#123;ret_status&#125;%&#123;$fg_bold[green]%&#125;%p %&#123;$fg[cyan]%&#125;%c %&#123;$fg_bold[blue]%&#125;$(git_prompt_info)%&#123;$fg_bold[blue]%&#125; % %&#123;$reset_color%&#125;'</span></span><br><span class="line"></span><br><span class="line">ZSH_THEME_GIT_PROMPT_PREFIX=<span class="string">"git:(%&#123;<span class="variable">$fg</span>[red]%&#125;"</span></span><br><span class="line">ZSH_THEME_GIT_PROMPT_SUFFIX=<span class="string">"%&#123;<span class="variable">$reset_color</span>%&#125;"</span></span><br><span class="line">ZSH_THEME_GIT_PROMPT_DIRTY=<span class="string">"%&#123;<span class="variable">$fg</span>[blue]%&#125;) %&#123;<span class="variable">$fg</span>[yellow]%&#125;✗%&#123;<span class="variable">$reset_color</span>%&#125;"</span></span><br><span class="line">ZSH_THEME_GIT_PROMPT_CLEAN=<span class="string">"%&#123;<span class="variable">$fg</span>[blue]%&#125;)"</span></span><br></pre></td></tr></table></figure></p>
+<p>需要将其修改为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">local</span> ret_status=<span class="string">"%(?:%&#123;<span class="variable">$fg_bold</span>[green]%&#125;➜ :%&#123;<span class="variable">$fg_bold</span>[red]%&#125;➜ %s)"</span></span><br><span class="line">PROMPT=<span class="string">'$&#123;ret_status&#125;%&#123;$fg_bold[green]%&#125;%p %&#123;$fg[cyan]%&#125;%c %&#123;$fg_bold[blue]%&#125; % %&#123;$reset_color%&#125;'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ZSH_THEME_GIT_PROMPT_PREFIX="git:(%&#123;$fg[red]%&#125;"</span></span><br><span class="line"><span class="comment"># ZSH_THEME_GIT_PROMPT_SUFFIX="%&#123;$reset_color%&#125;"</span></span><br><span class="line"><span class="comment"># ZSH_THEME_GIT_PROMPT_DIRTY="%&#123;$fg[blue]%&#125;) %&#123;$fg[yellow]%&#125;✗%&#123;$reset_color%&#125;"</span></span><br><span class="line"><span class="comment"># ZSH_THEME_GIT_PROMPT_CLEAN="%&#123;$fg[blue]%&#125;)"</span></span><br></pre></td></tr></table></figure></p>
+<p>也就是去掉git部分就好了，其他功能照常使用即可。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oh-my-zsh-git-主题/">oh_my_zsh git 主题</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-手Q一般化分享" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -735,71 +799,6 @@
 
       
 
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-backbone-fundamentals-前言" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/25/backbone-fundamentals-前言/" class="article-date">
-  	<time datetime="2015-08-25T14:29:57.000Z" itemprop="datePublished">2015-08-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/25/backbone-fundamentals-前言/">backbone-fundamentals 前言</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言">前言</h2><p>很久以前，“富数据web应用”(data-rich web)是一个矛盾的说法。但现在，这种web应用随处可见，并且你需要知道如何构建它们。</p>
-<p>传统意义上来讲，web应用把繁重的数据放置在服务器端，服务器再把载入完成的HTML页面推向浏览器。因此，客户端那边的JavaScript被限制住无法提升用户体验。到了现在，这种情况被转变了——客户端应用可以在需要的地方，从服务器上拉去原始数据并在浏览器里面渲染这些数据。</p>
-<p>想一下Ajax技术的购物车向里面添加物品的时候而不需要刷新整个页面。起初，jQuery成为处理这种需求的范例。它的原理就是发起Ajax请求然后更新页面里的文本以及其他东西。然而，这种jQuery所依赖的模式使得我们要把数据模型隐式的放在客户端。随着服务器不再是唯一知道我们物品数量的地方，这就暗示这种演变自然而然的会有一些波折。（不太会翻译，原文是：it was a hint that there was a natural tension and pull of this evolution.）</p>
-<p>然而，随着与服务器交互的无规则的代码的增长，代码变得臃肿并且越来越复杂。好的架构在客户端上变得不可或缺 —— 你无法仅凭一些厉害的jQuery代码保持你的应用的健壮性。更有可能的是，你最终会在业务逻辑中陷入噩梦般的UI callbacks，最终也逃避不了被下一个继承你代码的人丢弃的命运。</p>
-<p>谢天谢地的是，有很多并且还将有更多Javascript库可以帮助你提升代码的架构和可维护性，使得人们可以非常容易的构建健壮的界面而不需要付出太多的精力。<a href="http://documentclud.github.com/backbone/">Backbone.js</a> 迅速成为解决这类问题的最流行开源框架之一，这本书将会带领你来进行一个深入的实践。</p>
-<p>在刚开始学习基本知识的时候，通过一些练习，去学习如何在构建应用的时候，同时保持其组织性以及可维护性。如果你是希望自己写的代码拥有更好的可读性、架构、可扩展性，这份指南可以帮上你。</p>
-<p>提升开发者的水平对我来说很重要，这也是为什么我给这本书使用 Creative Commons Atribution-NonCommercial-ShareAlike 3.0 Unported <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">license</a>.欢迎大家来修正存在的问题，并且我很希望我们可以保持社区一直都有最新的源码。</p>
-<p>我还要感谢<a href="https://github.com/jashkenas">Jeremy Ashkenas</a> 和 <a href="http://www.documentcloud.org">DocumentCloud</a> 创建了 Backbone.js ，以及<a href="https://github.com/addyosmani/backbone-fundamentals/contributors">社区成员</a>的贡献使得这个项目的发展完全超出了我的想象。<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/backbone-fundamentals/">backbone-fundamentals</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/08/25/backbone-fundamentals-前言/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
